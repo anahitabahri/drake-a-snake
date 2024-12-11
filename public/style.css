@@ -1,0 +1,219 @@
+/* Base body styling with flexbox for centering */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9EAA87;  /* Earthy green background */
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Main game container styling */
+#gameContainer {
+    background-color: #8B956D;
+    padding: 15px;  /* Reduced padding for mobile */
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    max-width: 95vw;
+    margin: 0 auto;
+}
+
+#gameCanvas {
+    background-color: #C7E392;
+    border: 4px solid #4A5036;
+    max-width: 95vw;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Game canvas styling */
+canvas {
+    background-color: #C7E392;
+    border: 4px solid #4A5036;
+    max-width: 95vw;  /* Prevent horizontal scrolling */
+    height: auto;     /* Maintain aspect ratio */
+    display: block;
+}
+
+/* Score display styling */
+#score {
+    color: #4A5036;  /* Dark green text */
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Game controls text styling */
+#controls {
+    margin-top: 20px;
+    color: #4A5036;
+}
+
+/* Welcome message with bounce animation */
+#welcomeMessage {
+    color: #4A5036;
+    font-size: 16px;  /* Smaller font for mobile */
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    animation: bounce 1s infinite;
+    padding: 0 10px;  /* Add some padding for text wrapping */
+}
+
+.music-toggle {
+    color: #4A5036;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 15px 0;
+    padding: 8px 16px;
+    background-color: #C7E392;
+    border: 2px solid #4A5036;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    background-color: #4A5036;
+    color: #C7E392;
+    transform: scale(1.05);
+}
+
+/* Instruction Popup Styles */
+.instruction-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 80, 54, 0.9);  /* Semi-transparent dark green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.instruction-popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background-color: #C7E392;
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 4px solid #4A5036;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 90%;
+    margin: 20px;
+}
+
+.popup-content p {
+    color: #4A5036;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.popup-content button {
+    background-color: #4A5036;
+    color: #C7E392;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.popup-content button:hover {
+    background-color: #2A3016;
+    transform: scale(1.05);
+}
+
+
+
+/* Mobile Controls Styles - Updated */
+.mobile-controls {
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left . right"
+        ". down .";
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    width: 200px;  /* Fixed width for better control layout */
+}
+
+.arrow {
+    width: 60px;  /* Slightly larger */
+    height: 60px;
+    background-color: #C7E392;
+    border: 2px solid #4A5036;
+    border-radius: 50%;
+    font-size: 28px;  /* Larger icons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+    touch-action: manipulation;  /* Optimize for touch */
+    -webkit-tap-highlight-color: transparent;  /* Remove tap highlight */
+}
+
+
+.arrow:active {
+    background-color: #8B956D;
+}
+
+.arrow.up { grid-area: up; }
+.arrow.down { grid-area: down; }
+.arrow.left { grid-area: left; }
+.arrow.right { grid-area: right; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Hide mobile controls on desktop */
+@media (min-width: 768px) {
+    .mobile-controls {
+        display: none;
+    }
+}
+
+/* Bounce animation keyframes */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
